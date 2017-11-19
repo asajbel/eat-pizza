@@ -15,13 +15,15 @@ router.get("/", function(req, res) {
 });
 
 router.post("/api/pizza", function(req, res) {
-	pizza.create( req.body.pizza, function(result) {
+	pizza.create( req.body.name, function(result) {
 		res.json({ id: result.insertId});
 	});
 });
 
 router.put("/api/pizza/:id", function(req, res) {
-	pizza.update({id: req.params.id}, req.body, function(result){
+	console.log(req.body);
+	var devoured = req.body.devoured === true || req.body.devoured === "true";
+	pizza.update({devoured: devoured}, {id: req.params.id}, function(result){
 		if (result.changedRows == 0) {
 			return res.status(404).end();
 		} else {
@@ -29,3 +31,5 @@ router.put("/api/pizza/:id", function(req, res) {
 		}
 	});
 });
+
+module.exports = router;

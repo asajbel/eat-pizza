@@ -6,6 +6,6 @@ CREATE TABLE pizza (
 	id integer auto_increment not null,
 	name varchar(255) not null,
 	devoured boolean default false,
-	date timestamp default CURRENT_TIMESTAMP,
+	date timestamp default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	primary key(id)
 );

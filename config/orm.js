@@ -10,12 +10,12 @@ var orm = {
       }
       callback(res)
     });
+    console.log(call.sql);
   },
   read: function(from, callback) {
     var select, where, groupBy, having, orderBy, limit, command;
     var params = [];
     if (typeof arguments[1] == "object") {
-      assert(typeof arguments[2] === "function", "requires callback function");
       select = arguments[1].select;
       where = arguments[1].where;
       groupBy = arguments[1].groupBy;
@@ -25,7 +25,6 @@ var orm = {
       command = arguments[1].query;
       callback = arguments[2];
     } else {
-      assert(typeof arguments[1] === "function", "requires callback function");
       callback = arguments[1];
     }
     if (command === true) {
@@ -64,6 +63,7 @@ var orm = {
       if (err) throw err;
       callback(res);
     });
+    console.log(call.sql);
   },
   update: function(table, set, where, callback) {
     var params = [table];
@@ -86,6 +86,7 @@ var orm = {
       };
       callback(res);
     });
+    console.log(call.sql);
   },
   delete: function(table, where, callback) {
     var query = "DELETE FROM ?? WHERE ?";
@@ -94,12 +95,7 @@ var orm = {
       callback(res);
     });
     console.log(call.sql);
-  };
-
-  //Ends the connection to the sql server.
-  end = function() {
-    connection.end();
-  };
+  }
 }
 
 module.exports = orm;

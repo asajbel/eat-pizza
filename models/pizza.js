@@ -2,7 +2,7 @@ var orm = require("../config/orm.js");
 
 var pizza = {
 	all: function(callback) {
-		orm.read("pizza", function(res){
+		orm.read("pizza", {orderBy: "date"}, function(res){
 			callback(res);
 		});
 	},
