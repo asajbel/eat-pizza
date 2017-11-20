@@ -26,6 +26,7 @@
 .overlay {
 	background-color: rgba(247,230,210,0.75);
 	padding-bottom: 2rem;
+	height: 100%;
 }
 
 .jumbotron {
