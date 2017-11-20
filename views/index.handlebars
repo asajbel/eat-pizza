@@ -1,0 +1,49 @@
+<div class="overlay">
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">Pizza Time!</h1>
+    </div>
+    <div class="row">
+      <div id="eatCol" class="col-6">
+        <div class="card-header">
+          <h2>Uneaten</h2>
+        </div>
+        <div class="card-body">
+          {{#each pizza}} {{#unless devoured}}
+          <div class="row pizzaItem">
+            <div class="col-xl-10 col-lg-9">
+              {{name}}
+            </div>
+            <div class="col-xl-2 col-lg-3" align="right">
+              <button class="btn btn-primary btn-pizza devour" data-id="{{id}}">Devour</button>
+            </div>
+          </div>
+          {{/unless}} {{/each}}
+        </div>
+      </div>
+      <div id="devouredCol" class="col-6">
+        <div class="card-header">
+          <h2>Devoured</h2>
+        </div>
+        <div class="card-body">
+          {{#each pizza}} {{#if devoured}}
+          <p class="pizzaItem">
+            {{name}}
+          </p>
+          {{/if}} {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div id="submitArea" class="col-12">
+        <form id="newPizza">
+          <div class="form-group">
+            <label for="pizzaName">Enter New Pizza</label>
+            <input class="form-control" name="pizzaName" id="pizzaName" placeholder="New Pizza">
+          </div>
+          <button class="btn btn-primary btn-lg btn-block btn-pizza" id="submitPizza" type="submit">Submit New Pizza</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
